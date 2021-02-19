@@ -1,4 +1,4 @@
-package SeleniumActivities;
+package Session1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Activity4_2 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // Create a new instance of the Firefox driver
         WebDriver driver = new FirefoxDriver();
 
@@ -23,17 +23,22 @@ public class Activity4_2 {
 
         firstName.sendKeys("Saahil");
         lastName.sendKeys("Sharma");
-
+        driver.wait();
         //Enter the email
         driver.findElement(By.xpath("//input[@id = 'email']")).sendKeys("test@example.com");
-
+        driver.wait();
         //Enter the contact number
         driver.findElement(By.xpath("//input[@id = 'number']")).sendKeys("1234567890");
-
+        driver.wait();
         //Enter Message
         driver.findElement(By.xpath("//textarea")).sendKeys("This is my message");
-
+        driver.wait();
         //Click Submit
         driver.findElement(By.xpath("//input[contains(@class, 'green')]")).click();
+        
+        driver.switchTo().alert().accept();
+
+        //Close the browser
+        driver.close();
     }
 }
